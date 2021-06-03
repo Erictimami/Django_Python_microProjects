@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+        <meta charset="utf-8">
+        <title>Index</title>
+            <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">     
+        {% load static %} <br>
+       <!-- my own css file link in the last position to be priority-->
+
+      <!-- Put the static files in the static folder inside your app.  
+           Django collects files within all static folders and puts them within a single folder -->    
+        <style>
+            body{
+                margin: auto;
+                width: 1000px;
+                padding-left: 40px;
+                margin-top: 30px;
+                border: solid 1px;
+                
+            }
+
+            .add_word{
+                border-right: solid 3px;
+                width: 450px!important;
+                margin: 0px 0px 0px 0px;
+                padding: 0px 0px 0px 0px;
+                height: 800px;
+                display: inline-block;
+                vertical-align: top;
+            }
+            .session{
+                width: 450px!important;
+                margin: 0px 0px 0px 0px;
+                padding: 10px 0px 0px 0px;
+                height: 800px;
+                display: inline-block;
+                vertical-align: top;
+            }
+            form{
+                width: 400px!important;
+                margin: 0px 0px 0px 20px;
+                padding: 0px 0px 0px 20px;
+            }
+
+
+
+            label{
+                width: 200px!important;
+            }
+            h3{
+                margin-left: 40px
+            }
+            input{
+                width: 200px!important;
+                margin-left: 30px;
+            }
+            #inputEmail3{
+                width: 250px!important;
+                margin-right: 30px;
+            }
+            #new_word{
+                width: 300px!important;
+            }
+            button{
+                float: right;
+                margin-right: 30px;
+            }
+            span{
+                font-size: 12px;
+            }
+            p{
+                width: 200px;
+                display: inline-block
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <div class="add_word">
+             <h3>Add a new word</h3>
+            <form action="/process" method="POST">
+                {% csrf_token %}
+                <div class="form-group row">
+                    <input type="text" class="form-control" id="inputEmail3" placeholder="Enter your new word here" name="new_word"> 
+                </div>
+                <fieldset class="form-group">
+                    <div class="row">
+                        <legend class="col-form-label">Choose color</legend>
+                        <div class="col-sm-8">
+                            <div class="form-check">
+                            <input class="form-check-input" type="radio" name="color_word" id="gridRadios1" value="red" checked>
+                            <label class="form-check-label" for="gridRadios1">
+                                Red
+                            </label>
+                            </div>
+                            <div class="form-check">
+                            <input class="form-check-input" type="radio" name="color_word" id="gridRadios2" value="green">
+                            <label class="form-check-label" for="gridRadios2">
+                                Green
+                            </label>
+                            </div>
+                            <div class="form-check">
+                            <input class="form-check-input" type="radio" name="color_word" id="gridRadios3" value="blue">
+                            <label class="form-check-label" for="gridRadios3">
+                                Blue
+                            </label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gridCheck1" name="big_font">
+                        <label class="form-check-label" for="gridCheck1">
+                        Show in BIG fonts!
+                        </label>
+                    </div>
+                    </div>
+                </div>
+    
+                <div class="form-group row">
+                  <div class="col ">
+                    <button type="submit" class="btn btn-primary">Add to Session</button>
+                  </div>
+                </div>
+            </form>
+        </div>
+        <div class="session">
+            <div class="form-group row">
+                <form class="col" action='/clear_session' method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary">Clear Session</button>
+                </form>
+            </div>
+            {{activities|safe}}
+        </div>
+    </body>
+  </html>

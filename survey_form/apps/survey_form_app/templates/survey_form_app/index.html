@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+        <meta charset="utf-8">
+        <title>Index</title>
+            <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">     
+      {% load static %}
+       <!-- my own css file link in the last position to be priority-->
+ -->
+      <!-- Put the static files in the static folder inside your app.  
+           Django collects files within all static folders and puts them within a single folder -->    
+        <style>
+            body{
+                margin: auto;
+                width: 1000px;
+                padding-left: 0px
+            }
+
+            form{
+                border: solid 2px;
+                width: 500px!important;
+                margin: 100px 0px 0px 250px;
+                padding: 10px 0px 0px 25px;
+            }
+            select{
+              width: 250px!important;  
+              /* float: right; */
+                /* margin-left: 60%; */
+            }
+            label{
+                width: 200px!important;
+            }
+            /* .form-group{
+                
+            } */
+            #location{
+                display: inline;
+            }
+            textarea{
+                width: 445px;
+            }
+            input{
+                width: 200px;
+            }
+            #inputEmail3{
+                width: 250px!important;
+                margin-right: 30px;
+            }
+            #your_name{
+                width: 300px!important;
+            }
+            button{
+                float: right;
+                margin-right: 30px;
+            }
+        </style>
+    </head>
+    <body>
+        <form action="/process" method="POST">
+            {% csrf_token %}
+            <div class="form-group row">
+              <label for="inputEmail3" class="col col-form-label" id="your_name">Your Name:</label>
+              <div class="col">
+                <input type="text" class="form-control" id="inputEmail3" placeholder="Your name here" name="name"> 
+              </div>
+            </div>
+            <div class="form-group row" id="location">
+                <label for="inputPassword3" class="col col-form-label" >Location:</label>
+                <div class="input-group mb-3" id="location">
+                        <select name="location" class="custom-select" id="inputGroupSelect02">
+                          <option selected value="Mountain View">Mountain View</option>
+                          <option value="San Jose">San Jose</option>
+                          <option value="San Francisco">San Francisco</option>
+                          <option value="Belle Vue">Belle Vue</option>
+                        </select>
+                </div>
+            </div><br>
+
+            <div class="form-group row" id="location">
+                <label for="inputPassword3" class="col col-form-label" >Favorite Language:</label>
+                <div class="input-group mb-3" id="location">
+                        <select name="language" class="custom-select" id="inputGroupSelect02">
+                            <option selected value="JavaScript">JavaScript</option>
+                            <option value="Python">Python</option>
+                            <option value="Jinja">Jinja</option>
+                            <option value="Django">Django</option>
+                        </select>
+                </div><br>
+            </div><br>
+            <label for="inputPassword3" class="col col-form-label">Comment (Optional):</label><br>
+            <textarea id="textarea" rows="3" name="comment"></textarea>
+            <div class="form-group row">
+              <div class="col ">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+          </form>
+    </body>
+  </html>

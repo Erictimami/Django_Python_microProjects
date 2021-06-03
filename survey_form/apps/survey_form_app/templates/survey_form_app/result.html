@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+        <meta charset="utf-8">
+        <title>result</title>
+            <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">     
+      {% load static %}
+       <!-- my own css file link in the last position to be priority-->
+
+      <!-- Put the static files in the static folder inside your app.  
+           Django collects files within all static folders and puts them within a single folder -->    
+        <style>
+            body{
+                margin: auto;
+                width: 1000px;
+                padding-left: 0px
+            }
+            form{
+                border: solid 2px;
+                width: 500px!important;
+                margin: 40px 0px 0px 250px;
+                padding: 10px 0px 0px 25px;
+                height: 300px;
+            }
+            button{
+                float: right;
+                margin-right: 30px;
+                margin: auto;
+            }
+            a{
+                margin: auto;
+            }
+            .thanks{
+                background-color: green;
+                border: solid 2px;
+                width: 500px;    
+                margin: 40px 0px 0px 250px;
+            }
+            p{
+                width: 200px;
+            }
+            .key{
+                width: 200px;
+                display: inline-block;
+                
+            }
+            .argument{
+                width: 200px;
+                display: inline-block;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <p class="thanks">Thanks for submitting this form! You have submitted this form {{count}} time(s) now</p>
+        <form>
+            <div class="info">
+                <h4>Submitted Information</h4>
+                <div class="key">
+                    <p>Name: </p>
+                    <p>Dojo Location: </p>
+                    <p>Favorite Language: </p>
+                    <p>Comment: </p>
+                </div>
+                <div class="argument">
+                    <p>{{ name }}</p>
+                    <p>{{location}}</p>
+                    <p>{{language}}</p>
+                    <p>{{comment}}</p>     
+                </div>
+
+
+
+                <div class="col">
+                <button type="submit" class="btn btn-primary"> <a href="/">Go Back</a></button>
+                </div>
+            </div>
+        </form>   
+    </body>
+  </html>

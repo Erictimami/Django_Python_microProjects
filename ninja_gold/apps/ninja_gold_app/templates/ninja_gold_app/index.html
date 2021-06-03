@@ -1,0 +1,124 @@
+<html>
+    <head>
+        <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+            <!-- my own css file link in the last position to be priority-->
+    <style>
+        .container{
+            margin: 0px auto;
+            margin-left: 50px;
+            text-align: center;
+            width: 1000px;
+            min-height: 500px;
+            border: solid 3px;
+            padding-top: 30px;
+            display: inline-block;
+        }
+
+        .form-group .row{
+            margin-top: 20px!important;
+            width: 300px!important;
+        }
+
+        h2{
+            margin: 0px;
+            margin-left: 40px;
+            text-align: center;
+        }
+
+        form{
+            padding: 25px;
+            height: 180px;
+            width: 180px;
+            text-align: center;
+            border: solid 3px;
+            margin-bottom: 20px;
+            display: inline-block;
+            margin-left: 40px;
+        }
+
+        #score{
+            width: 600px!important;
+        }
+        #your_gold{
+            width: 100px!important;
+        }
+
+        .group_form{
+            width: 930px;
+            height: 210px;
+            display: block;
+            margin-bottom: 30px;
+        }
+
+        .activities_name{
+            margin-left: 5px!important;
+            font-size: normal;
+        }
+        #activities{
+            width: 860px;
+            min-height: 300px;
+            border: solid 2px;
+            margin-left: 50px;
+        }
+        .not_casino{
+            color: rgb(10, 75, 10);
+        }
+        .casino_loss{
+            color: red;
+        }
+        .casino_win{
+            color: green;
+        }
+
+    </style>
+    </head>
+    <body class="container">
+
+        <div>
+            <div class="form-group row" id="score">
+                <label for="inputEmail3" class="col-sm-2 col-form-label" id="your_gold">Your Gold:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputEmail3" name="your gold:" placeholder=0 value="{{ your_gold }}">
+                </div>
+            </div>
+            <div class="group_form">
+                <form action="/process_money", method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="place" value="farm"/>
+                    <h3 >Farm</h3>
+                    <p> (earns 10-20 golds) </p>   
+                    <button  type="submit" class="btn btn-primary">Find Gold!</button>
+                </form>
+                <form action="/process_money", method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="place" value="cave"/>
+                    <h3 >Cave</h3>
+                    <p> (earns 5-10 golds) </p>   
+                    <button  type="submit" class="btn btn-primary">Find Gold!</button> 
+                </form>    
+                <form action="/process_money", method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="place" value="house"/> 
+                    <h3 >House</h3>
+                    <p> (earns 2-5 golds) </p>   
+                    <button  type="submit" class="btn btn-primary">Find Gold!</button> 
+                </form>          
+                <form action="/process_money", method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="place" value="casino"/> 
+                    <h3 >Casino</h3>
+                    <p> (earns/takes 0-50 golds) </p>   
+                    <button  type="submit" class="btn btn-primary">Find Gold!</button> 
+                </form>
+            </div>
+            <div class="form-group" id="activities">
+                    <label for="exampleFormControlTextarea1" class="activities_name">Activities:</label>
+                    {{ activities|safe }} 
+                    <!-- <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="Activities:">{{ activities|safe }}</textarea> -->
+            </div>      
+        </div>
+ 
+    </body>
+</html>
+

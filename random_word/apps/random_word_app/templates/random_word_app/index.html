@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+        <meta charset="utf-8">
+        <title>Index</title>
+      {% load static %}
+      <!-- The line above tells Django to be ready to listen for static files -->
+      <link rel="stylesheet" href="{% static 'ourApp/css/main.css' %}">
+      <!-- Put the static files in the static folder inside your app.  
+           Django collects files within all static folders and puts them within a single folder -->    
+        <style>
+            body{
+                margin: auto;
+                width: 1000px;
+                text-align: center;
+                padding-left: 500px
+            }
+            h4{
+                margin: 100px 0px 0px 100px;
+                height: 50px;
+                width: 300px;
+                border: solid 2px;
+                text-align: center;  
+                padding-top: 15px;         
+            }
+            h2{
+                margin-top: 30px;
+                height: 150px;
+                width: 500px;
+                border: solid 2px;
+                text-align: center; 
+                padding-top: 100px;
+            }
+            input{
+                margin: 20px 0px 0px 200px;
+                height: 30px;
+                width: 100px;
+                background-color: green;
+                text-align: center;
+            }
+            form{
+                margin-left: 0px;
+                padding-left: 0px;
+                width: 120px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h4>Random Word (attempt #13)</h4>
+        <h2>{{request.session.random}} <br> </h2>
+        <form action="/" method="POST">
+            {% csrf_token %}  
+            <input type="submit" value="Generate">
+        </form>
+    </body>
+  </html>
